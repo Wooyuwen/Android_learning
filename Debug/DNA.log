@@ -1,0 +1,11 @@
+﻿  write_file.cpp
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(21,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(28,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(36,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(43,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(51,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(57,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(64,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Administrator\source\repos\DNA\write_file.cpp(78,20): warning C4018: “<”: 有符号/无符号不匹配
+  DNA.vcxproj -> C:\Users\Administrator\source\repos\DNA\Debug\DNA.exe
