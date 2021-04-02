@@ -102,9 +102,13 @@ int kmp(string T, string p){...}
 > {
 > 	if (ind1 >= t.length() - 1000 || ind2 >= p.length() - 1000)
 > 		return -1;
-> 	int len = 0;int ans = 0;bool even = false;
-> 	string re = t.substr(ind1, 1000); string s = p.substr(ind2, 1000);
-> 	const char* ref = re.c_str(); const char* sv = s.c_str();
+>     int len = 0;
+>     int ans = 0;
+>     bool even = false;
+>     string re = t.substr(ind1, 1000); 
+>     string s = p.substr(ind2, 1000);
+> 	const char* ref = re.c_str(); 
+>     const char* sv = s.c_str();
 > 	while (len <= 497)
 > 	{
 > 		if (cmp(ref[len], sv[len]) )
