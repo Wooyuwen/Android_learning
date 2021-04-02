@@ -1,2 +1,3 @@
-# Android_learning
-Learning about Android development
+#算法设计PJ
+TASK1√
+TASK2
