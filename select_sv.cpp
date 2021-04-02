@@ -21,7 +21,7 @@ void select_sv(vector<string>& a, vector<string>& b, vector<string> c)
 	vector<vector<info_inv_dup>>Dup_Inv;
 
 	vector<info_tra> tra_all;//storing both types of tra
-	vector<info_c_tra>tra_cop_LN;//for selecting complicated tra
+	vector<info_c_tra>tra_cop_LN;//selecting complicated tra
 	vector<info_c_tra>tra_cop_AK;
 
 	//>NZ_LN879429.1
@@ -153,7 +153,7 @@ int check_ins_dup(string t, string p, int& ind1, int& ind2,int&is_dup,int&pre)
 			string pre = p.substr(ind2-i-del, del);
 			
 			if (strcmp(dup.c_str(), pre.c_str()) == 0){
-				pre = i;//Æ«²îÎ»Êı£¬¼ÇÂ¼ÆğÊ¼Î»ÖÃĞèÒªÍùÇ°ÒÆ¶¯i¸öµ¥Î»
+				pre = i;//åå·®ä½æ•°ï¼Œè®°å½•èµ·å§‹ä½ç½®éœ€è¦å¾€å‰ç§»åŠ¨iä¸ªå•ä½
 				is_dup = 1;
 				ind2 += del;
 				return del;
