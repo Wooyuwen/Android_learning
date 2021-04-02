@@ -1,3 +1,3 @@
 # Detect the SV strings of the DNA
-**PJ of Analysis Algorithm and Design**
+**PJ of Analysis and Design of Algorithm **
 
