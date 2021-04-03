@@ -200,7 +200,8 @@ int kmp(string T, string p){...}
 > `check_tra()`：
 >
 > ```c++
-> void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak)
+> void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak,vector<info_ins_del>ins_ln,
+> 	vector<info_ins_del>ins_ak, vector<info_ins_del>del_ln, vector<info_ins_del>del_ak)
 > {
 > 	//combine the exchanged tra
 > 	for (int i = 0; i < ln.size(); i++) {
@@ -210,13 +211,30 @@ int kmp(string T, string p){...}
 > 		}
 > 	}
 > 	//select the simple tra
-> 
+> 	for (int i = 0; i < ins_ln.size();i++) {
+> 		for (int j = 0; j < del_ak.size(); j++) {
+> 			if (ins_ln[i].s == del_ak[j].s) {
+> 				ins_ln[i].s = " ";
+> 				del_ak[j].s = " ";
+> 			}
+> 			t.push_back({ 0,ins_ln[i].start,ins_ln[i].end, 1, del_ak[j].start, del_ak[j].end });
+> 		}
+> 	}
+> 	for (int i = 0; i < ins_ak.size(); i++) {
+> 		for (int j = 0; j < del_ln.size(); j++) {
+> 			if (ins_ak[i].s == del_ln[j].s) {
+> 				ins_ak[i].s = " ";
+> 				del_ln[j].s = " ";
+> 			}
+> 			t.push_back({ 1,ins_ak[i].start,ins_ak[i].end, 0, del_ln[j].start, del_ln[j].end });
+> 		}
+> 	}
 > }
 > ```
->
-> ​    
 
-至此就找完了所有的`SV`片段，执行程序，读取数据文件，将结果写至`result.txt`文件，写文件的函数见`write_file.cpp`；
+函数还给出了找出讲义上所列出的情况，即不同的单链之间的增删(`simple tra`)。
+
+至此就找完了所有的`SV`片段，执行程序，读取数据文件，将结果写至`result.txt`文件，写文件的函数`write_file.cpp`，结果文件`result.txt`：
 
 ```c++
 INS NZ_AKCA01000001.1 1953747 1954463

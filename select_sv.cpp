@@ -251,7 +251,8 @@ int check_inv(string t, string p, int& ind1, int& ind2)
 		return -1;
 }
 
-void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak)
+void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak,vector<info_ins_del>ins_ln,
+	vector<info_ins_del>ins_ak, vector<info_ins_del>del_ln, vector<info_ins_del>del_ak)
 {
 	//combine the exchanged tra
 	for (int i = 0; i < ln.size(); i++) {
@@ -261,7 +262,24 @@ void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak)
 		}
 	}
 	//select the simple tra
-
+	for (int i = 0; i < ins_ln.size();i++) {
+		for (int j = 0; j < del_ak.size(); j++) {
+			if (ins_ln[i].s == del_ak[j].s) {
+				ins_ln[i].s = " ";
+				del_ak[j].s = " ";
+			}
+			t.push_back({ 0,ins_ln[i].start,ins_ln[i].end, 1, del_ak[j].start, del_ak[j].end });
+		}
+	}
+	for (int i = 0; i < ins_ak.size(); i++) {
+		for (int j = 0; j < del_ln.size(); j++) {
+			if (ins_ak[i].s == del_ln[j].s) {
+				ins_ak[i].s = " ";
+				del_ln[j].s = " ";
+			}
+			t.push_back({ 1,ins_ak[i].start,ins_ak[i].end, 0, del_ln[j].start, del_ln[j].end });
+		}
+	}
 }
 
 //correct
