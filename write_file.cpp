@@ -75,8 +75,8 @@ void write_file(vector<vector<info_ins_del>>& a, vector<vector<info_inv_dup>>& b
 	for (int i = 0; i < c.size(); i++)
 	{
 		fout << "TRA"
-			<< " " << d[c[i].id_del] << " " << c[i].start_del << " "
-			<< c[i].end_del << " " << d[c[i].id_ins] << " " << c[i].start_ins << " "
+			<< " " << d[c[i].id_del].substr(1, d[c[i].id_del].length()) << " " << c[i].start_del << " "
+			<< c[i].end_del << " " << d[c[i].id_ins].substr(1, d[c[i].id_ins].length()) << " " << c[i].start_ins << " "
 			<< c[i].end_ins << endl;
 	}
 	fout.close();
