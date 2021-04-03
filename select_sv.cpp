@@ -253,7 +253,7 @@ int check_inv(string t, string p, int& ind1, int& ind2)
 
 void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak)
 {
-	//combine the complicated tra
+	//combine the exchanged tra
 	for (int i = 0; i < ln.size(); i++) {
 		for (int j = 0; j < ak.size(); j++) {
 			if (ln[i].len == ak[j].len)

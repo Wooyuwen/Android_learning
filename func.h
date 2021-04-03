@@ -27,7 +27,7 @@ struct info_tra {//for tra results
 	int end_ins;
 };
 
-struct info_c_tra {//for complicated tra
+struct info_c_tra {//store tra and check later
 	int id;
 	int start;
 	int len;
