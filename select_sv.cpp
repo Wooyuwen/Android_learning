@@ -137,7 +137,7 @@ void select_sv(vector<string>& a, vector<string>& b, vector<string> c)
 	write_file(Insert_Del,Dup_Inv,tra_all,c);
 }
 
-int check_ins_dup(string t, string p, int& ind1, int& ind2,int&is_dup,int&pre)
+int check_ins_dup(string t, string p, int& ind1, int& ind2,int&is_dup,int& pren)
 {
 	if (ind1 >= t.length() - 1000 || ind2 >= p.length() - 2000)
 		return -1;
@@ -153,7 +153,7 @@ int check_ins_dup(string t, string p, int& ind1, int& ind2,int&is_dup,int&pre)
 			string pre = p.substr(ind2-i-del, del);
 			
 			if (strcmp(dup.c_str(), pre.c_str()) == 0){
-				pre = i;//偏差位数，记录起始位置需要往前移动i个单位
+				pren = i;
 				is_dup = 1;
 				ind2 += del;
 				return del;
@@ -251,33 +251,13 @@ int check_inv(string t, string p, int& ind1, int& ind2)
 		return -1;
 }
 
-void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak,vector<info_ins_del>ins_ln,
-	vector<info_ins_del>ins_ak, vector<info_ins_del>del_ln, vector<info_ins_del>del_ak)
+void check_tra(vector<info_tra>& t, vector<info_c_tra>ln,vector<info_c_tra>ak)
 {
 	//combine the exchanged tra
 	for (int i = 0; i < ln.size(); i++) {
 		for (int j = 0; j < ak.size(); j++) {
 			if (ln[i].len == ak[j].len)
 				t.push_back({0,ln[i].start,ln[i].start+ln[i].len,1,ak[j].start,ak[j].start + ak[j].len });
-		}
-	}
-	//select the simple tra
-	for (int i = 0; i < ins_ln.size();i++) {
-		for (int j = 0; j < del_ak.size(); j++) {
-			if (ins_ln[i].s == del_ak[j].s) {
-				ins_ln[i].s = " ";
-				del_ak[j].s = " ";
-			}
-			t.push_back({ 0,ins_ln[i].start,ins_ln[i].end, 1, del_ak[j].start, del_ak[j].end });
-		}
-	}
-	for (int i = 0; i < ins_ak.size(); i++) {
-		for (int j = 0; j < del_ln.size(); j++) {
-			if (ins_ak[i].s == del_ln[j].s) {
-				ins_ak[i].s = " ";
-				del_ln[j].s = " ";
-			}
-			t.push_back({ 1,ins_ak[i].start,ins_ak[i].end, 0, del_ln[j].start, del_ln[j].end });
 		}
 	}
 }
@@ -302,7 +282,8 @@ int check_c_tra(int id, string t, string p, int& ind1, int& ind2, vector<info_c_
 			if (max < 10) {
 				max = 0;
 			}
-			else {//find it! the complicated tra
+			else {
+				//find it! the complicated tra
 				tra.push_back({ id,ind1,len - 10,subt.substr(0,len - 10),subp.substr(0,len - 10) });
 				ind1 += len - 10;
 				ind2 += len - 10;
